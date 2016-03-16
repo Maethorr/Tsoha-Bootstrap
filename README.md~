@@ -7,4 +7,4 @@ Yleisiä linkkejä:
 
 ## Työn aihe
 
-[linkki valmiiseen aiheeseen](http://advancedkittenry.github.io/suunnittelu_ja_tyoymparisto/aiheet/Muistilista.html)
+[linkki valmiiseen muistilista aiheeseen](http://advancedkittenry.github.io/suunnittelu_ja_tyoymparisto/aiheet/Muistilista.html)
