@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Maksa laskut</h1>
+<!-- Painikkeet tähän -->
+
+
+<!-- Tiedot tulee listana tähän -->
+<p>
+    <button class="btn btn-danger">Poista</button> 
+    <button class="btn btn-danger">Muokkaa</button>
+</p>
+
+<ul>
+    <li><strong>Prioriteetti:</strong>1</li>
+    <li><strong>Status:</strong> <label class="label label-danger">kesken</label></li>
+
+    <li><strong>Luokka:</strong> Kotityöt</li>
+
+</ul>
+<!-- Kuvaus tulee tähän -->
+<p>
+    Sähkölasku, vuokra
+</p>
+
+{% endblock %}

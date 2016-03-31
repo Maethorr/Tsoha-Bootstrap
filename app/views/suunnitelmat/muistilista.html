@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Muistilista</h1>
+
+<p>
+    <button class="btn btn-success">Lisää tehtävä</button>
+</p>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Nimi</th>
+            <th>Prioriteetti</th>
+            <th>Status</th>
+
+            <th>Luokka</th>
+
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for game in tehtävät %}  
+        <tr>
+            <td><a href="http://airosmaa.users.cs.helsinki.fi/muistilista/kuvaus">Maksa laskut</a></td>
+            <td>1</td>
+            <td><label class="label label-danger">kesken</label></td>   
+
+
+
+            <td>Kotityöt</td>
+
+            <th><a class="btn btn-default btn-sm" href="http://airosmaa.users.cs.helsinki.fi/muistilista/muokkaa">Muokkaa</a></th>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
