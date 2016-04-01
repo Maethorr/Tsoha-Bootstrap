@@ -6,10 +6,10 @@ Yleisiä linkkejä:
 * [Linkki dokumentaatiooni](https://github.com/Maethorr/Tsoha-Bootstrap/blob/master/doc/dokumentaatio.pdf)
 
 Sivujen suunnitelmat:
-* [Etusivu](http://saratolv.users.cs.helsinki.fi/tsoha/suunnitelmat/kirjautuminen)
-* [Muistilista](http://saratolv.users.cs.helsinki.fi/tsoha/suunnitelmat/muistilista)
-* [Muokkaus](http://saratolv.users.cs.helsinki.fi/tsoha/suunnitelmat/muokkaa/1)
-* [Kuvaus](http://saratolv.users.cs.helsinki.fi/tsoha/suunnitelmat/kuvaus/1)
+* [Etusivu (kirjautuminen)](http://saratolv.users.cs.helsinki.fi/tsoha/suunnitelmat/kirjautuminen)
+* [Listaussivu](http://saratolv.users.cs.helsinki.fi/tsoha/suunnitelmat/muistilista)
+* [Muokkaussivu](http://saratolv.users.cs.helsinki.fi/tsoha/suunnitelmat/muokkaa/1)
+* [Kuvaussivu](http://saratolv.users.cs.helsinki.fi/tsoha/suunnitelmat/kuvaus/1)
 
 ## Työn aihe (muistilista)
 
