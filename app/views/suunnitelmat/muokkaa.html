@@ -1,55 +1,39 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Muokkaa tehtävää: Maksa laskut</h1>
+<h1>Muokkaa tehtävää: Testitehtävä</h1>
 
 
 
 <form>
-    <div class="checkbox">
-        <label>
-            <input type="checkbox">
-            Tehty
-        </label>
-    </div>
     <div class="form-group">
         <label>Nimi</label>
-        <input class="form-control" value="Maksa laskut" type="text">
+        <input class="form-control" value="Testitehtävä" type="text">
     </div>
-    <div><label>Prioriteetti</label></div>
-    <div><label class="radio-inline">
-            <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
-        </label>
-        <label class="radio-inline">
-            <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
-        </label>
-        <label class="radio-inline">
-            <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 3
-        </label>
+    <div class="form-group">
+        <label>Kuvaus</label>
+        <input class="form-control" value="Tähän tehtävän kuvaus ja lisäinfoa" type="text">
     </div>
-    <div><label>Luokka</label></div>
-    <div>
-        <select class="form-control">
-            <option>Kotityöt</option>
+    <label class="control-label">Prioriteetti</label>
+    <div class="form-group">
+        <select type="number" name="prioriteetti" class="form-control">
+
+            <option>1</option>
             <option>2</option>
             <option>3</option>
             <option>4</option>
             <option>5</option>
-        </select></div>
-
-
-    <div class="form-group">
-        <label>Kuvaus</label>
-        <textarea class="form-control">        Sähkölasku, vuokra
-        </textarea>
+        </select>
     </div>
-
-
-
     <div class="form-group">
-        <button class="btn btn-danger">Poista</button> 
-        <button type="submit" class="btn btn-primary">Tallenna</button>
-
-    </div>
+        <label class="control-label">Luokat</label>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox">testiluokka1
+            </label>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-success">Tallenna</button>
+        </div>
 </form>
 {% endblock %}
