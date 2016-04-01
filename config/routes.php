@@ -8,6 +8,10 @@ $routes->get('/hiekkalaatikko', function() {
     HelloWorldController::sandbox();
 });
 
+$routes->get('/kirjautuminen', function() {
+    HelloWorldController::kirjaudu();
+});
+
 $routes->get('/suunnitelmat/muistilista', function() {
     HelloWorldController::muistilista();
 });
