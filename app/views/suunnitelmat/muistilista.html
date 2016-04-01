@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Muistilista</h1>
+<h1>Tehtävälista</h1>
 
 <p>
     <button class="btn btn-success">Lisää tehtävä</button>
@@ -11,28 +11,20 @@
         <tr>
             <th>Nimi</th>
             <th>Prioriteetti</th>
-            <th>Status</th>
-
             <th>Luokka</th>
-
+            <th>Lisäyspäivämäärä</th>
             <th></th>
         </tr>
     </thead>
 
     <tbody>
-        {% for game in tehtävät %}  
         <tr>
-            <td><a href="http://airosmaa.users.cs.helsinki.fi/muistilista/kuvaus">Maksa laskut</a></td>
-            <td>1</td>
-            <td><label class="label label-danger">kesken</label></td>   
-
-
-
-            <td>Kotityöt</td>
-
-            <th><a class="btn btn-default btn-sm" href="http://airosmaa.users.cs.helsinki.fi/muistilista/muokkaa">Muokkaa</a></th>
+            <td><a href="">Testitehtävä</a></td>
+            <td>3</td>
+            <td>kotityöt</td>
+            <td>01.04.2016</td>
+            <td><a class="btn btn-primary" href="" role="button">Muokkaa</a></td>
         </tr>
-        {% endfor %}
     </tbody>
 </table>
 {% endblock %}
