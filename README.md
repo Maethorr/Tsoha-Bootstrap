@@ -11,6 +11,6 @@ Sivujen suunnitelmat:
 * [Muokkaus](http://saratolv.users.cs.helsinki.fi/tsoha/muokkaa)
 * [Kuvaus](http://saratolv.users.cs.helsinki.fi/tsoha/kuvaus)
 
-## Työn aihe (muistilista parityönä)
+## Työn aihe (muistilista)
 
 [linkki valmiiseen aiheeseen](http://advancedkittenry.github.io/suunnittelu_ja_tyoymparisto/aiheet/Muistilista.html)

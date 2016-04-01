@@ -8,7 +8,7 @@ Yleisiä linkkejä:
 Sivujen suunnitelmat:
 * [Kirjautumissivu](http://saratolv.users.cs.helsinki.fi/tsoha/kirjautuminen)
 * [Muistilista](http://saratolv.users.cs.helsinki.fi/tsoha/muistilista)
-* [Muokkaus](http://saratolv.users.cs.helsinki.fi/tsoha/muokkaa?)
+* [Muokkaus](http://saratolv.users.cs.helsinki.fi/tsoha/muokkaa)
 * [Kuvaus](http://saratolv.users.cs.helsinki.fi/tsoha/kuvaus)
 
 ## Työn aihe (muistilista parityönä)
