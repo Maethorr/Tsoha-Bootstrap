@@ -8,27 +8,15 @@ $routes->get('/hiekkalaatikko', function() {
     HelloWorldController::sandbox();
 });
 
-$routes->get('/muistilista', function() {
+$routes->get('/suunnitelmat/muistilista', function() {
     HelloWorldController::muistilista();
 });
-$routes->get('/muokkaa', function() {
+$routes->get('/suunnitelmat/muokkaa/1', function() {
     HelloWorldController::muokkaa();
 });
-$routes->get('/kirjautuminen', function() {
+$routes->get('/suunnitelmat/kirjautuminen', function() {
     HelloWorldController::kirjaudu();
 });
-$routes->get('/kuvaus/', function() {
+$routes->get('/suunnitelmat/kuvaus/1', function() {
     HelloWorldController::kuvaus();
-});
-$routes->get('/kuvaus/:id', function() {
-    HelloWorldController::kuvaus();
-});
-$routes->get('/tehtävä', function() {
-    TehtäväController::index();
-});
-$routes->post('/suunnitelmat', function() {
-    TehtäväController::store();
-});
-$routes->get('/suunnitelmat/new', function() {
-    TehtäväController::create();
 });
