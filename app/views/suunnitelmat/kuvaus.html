@@ -1,25 +1,18 @@
 {% extends "base.html" %}
 {% block content %}
+
 <h1>Testitehtävä</h1>
-<!-- Painikkeet tähän -->
 
 
-<!-- Tiedot tulee listana tähän -->
+<p><strong>Kuvaus:</strong> Tähän tehtävän kuvaus ja lisäinfoa siitä.</p>
+<p><strong>Prioriteetti:</strong> 3</p>
+<p><strong>Luokka:</strong> kotityöt</p>
+<p><strong>Lisäyspäivämäärä:</strong> 01.4.2016</p>
+
 <p>
-    <button class="btn btn-danger">Poista</button> 
-    <button class="btn btn-danger">Muokkaa</button>
+    <a class="btn btn-default" href="" role="button">Muokkaa</a>
+    <a class="btn btn-danger" href="" role="button">Poista</a>
 </p>
 
-<ul>
-    <li><strong>Prioriteetti:</strong>1</li>
-    <li><strong>Status:</strong> <label class="label label-danger">kesken</label></li>
-
-    <li><strong>Luokka:</strong> Kotityöt</li>
-
-</ul>
-<!-- Kuvaus tulee tähän -->
-<p>
-    Sähkölasku, vuokra
-</p>
 
 {% endblock %}
