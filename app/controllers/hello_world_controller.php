@@ -1,6 +1,6 @@
 <?php
 
-require 'app/models/tehtävä.php';
+require 'app/models/luokka.php';
 
 class HelloWorldController extends BaseController {
 
@@ -11,12 +11,12 @@ class HelloWorldController extends BaseController {
 
     public static function sandbox() {
 // Testaa koodiasi täällä
-        View::make('helloworld.html');
-        $lasku = Tehtävä::find(1);
-        $tehtävät = Tehtävä::all();
+       // View::make('helloworld.html');
+        $tyyppi = Luokka::find(1);
+        $kayttajat = Luokka::all();
 // Kint-luokan dump-metodi tulostaa muuttujan arvon
-        Kint::dump($tehtävät);
-        Kint::dump($lasku);
+        Kint::dump($kayttajat);
+        Kint::dump($tyyppi);
     }
 
     public static function muistilista() {
