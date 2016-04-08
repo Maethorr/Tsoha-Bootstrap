@@ -28,7 +28,7 @@ $routes->get('/suunnitelmat/kuvaus/1', function() {
 $routes->get('/tehtavat', function() {
     TehtavaController::index();
 });
-$routes->get('/tehtava', function() {
+$routes->post('/tehtava', function() {
     TehtavaController::store();
 });
 $routes->get('/tehtava/uusi', function() {

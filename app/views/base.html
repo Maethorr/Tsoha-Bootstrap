@@ -6,16 +6,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>
-
+            {% block title %}
             Muistilista
-
+            {% endblock %}
         </title>
 
+        {% block head %}
 
         <link href="{{base_path}}/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-
         <link href="{{base_path}}/assets/css/site.css" rel="stylesheet">
+
+        <link href="{{base_path}}/assets/css/table.css" rel="stylesheet">
+
+        {% endblock %}
 
     </head>
 
@@ -38,14 +42,15 @@
                 <div class="collapse navbar-collapse" id="navigation">
                     <ul class="nav navbar-nav">
                         <!-- Navigaation linkit -->
-                        <li><a href="#">Tehtävälista</a></li>
+                        <li><a href="{{base_path}}/tehtavat">Tehtävälista</a></li>
+                        <li><a href="{{base_path}}/luokat">Luokat</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Navigaation linkit -->
                         <li><a href="http://saratolv.users.cs.helsinki.fi/tsoha/kirjautuminen">Kirjaudu</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#">Rekisteröidy</a></li>
+                        <li><a href="{{base_path}}/rekisteroityminen">Rekisteröidy</a></li>
                     </ul>
                 </div>
             </div>
