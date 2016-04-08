@@ -31,8 +31,8 @@ class TehtavaController extends BaseController {
     }
 
     public static function uusi() {
-        $luokat = Luokka::all();
-        View::make('tehtava/uusi.html', array('luokat' => $luokat));
+        //$luokat = Luokka::all();
+        View::make('tehtava/uusi.html');
     }
 
 }

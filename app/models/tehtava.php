@@ -27,43 +27,28 @@ class Tehtava extends BaseModel {
     }
 
     public static function find($id) {
-        $kysely = DB::connection()->prepare('SELECT * FROM Tehtava WHERE id = :id LIMIT 1');
-        $kysely->execute(array('id' => $id));
-        $rivi = $kysely->fetch();
-        $luokkakysely = DB::connection()->prepare('SELECT Luokka.id, Luokka.nimi FROM Tehtava, Luokka, TehtavanLuokka WHERE TehtavanLuokka.tehtavaId = tehtava.id and TehtavanLuokka.luokkaId = Luokka.id and Tehtava.id = :id');
-        $luokkakysely->execute(array('id' => $id));
-        $luokkarivit = $luokkakysely->fetchAll();
-        $luokat = array();
-        foreach ($luokkarivit as $luokkarivi) {
-            $luokat[] = new Luokka(array(
-                'id' => $luokkarivi['id'],
-                'nimi' => $luokkarivi['nimi']
-            ));
-        }
-        if ($rivi) {
+        $query = DB::connection()->prepare('SELECT * FROM Tehtava WHERE id = :id LIMIT 1');
+        $query->execute(array('id' => $id));
+        $row = $query->fetch();
+        if ($row) {
             $tehtava = new Tehtava(array(
-                'id' => $rivi['id'],
-                'kayttajaId' => $rivi['kayttajaId'],
-                'nimi' => $rivi['nimi'],
-                'kuvaus' => $rivi['kuvaus'],
-                'prioriteetti' => $rivi['prioriteetti'],
-                'lisayspaiva' => $rivi['lisayspaiva'],
-                'luokat' => $luokat
+                'id' => $row['id'],
+                'kayttajaId' => $row['kayttajaId'],
+                'nimi' => $row['nimi'],
+                'kuvaus' => $row['kuvaus'],
+                'prioriteetti' => $row['prioriteetti'],
+                'lisayspaiva' => $row['lisayspaiva']
             ));
+            return $tehtava;
         }
-        return $tehtava;
+        return null;
     }
 
     public function save() {
-        $kysely = DB::connection()->prepare('INSERT INTO Tehtava (kayttajaId, nimi, kuvaus, prioriteetti, lisayspaiva) values (:kayttajaId, :nimi, :kuvaus, :prioriteetti, now()) RETURNING id');
-        $kysely->execute(array('kayttaja' => $_SESSION['kayttaja'], 'nimi' => $this->nimi, 'kuvaus' => $this->kuvaus, 'prioriteetti' => $this->prioriteetti));
-        $rivi = $kysely->fetch();
-        $this->id = $rivi['id'];
-        foreach ($this->luokat as $luokka) {
-            $luokkakysely = DB::connection()->prepare('INSERT INTO Luokat (luokka, tehtava) VALUES (:luokka, :tehtava)');
-            $luokkakysely->execute(array('luokka' => $luokka, 'tehtava' => $this->id));
-            $rivi = $kysely->fetch();
-        }
+        $query = DB::connection()->prepare('INSERT INTO Tehtava (kayttajaId, nimi, kuvaus, prioriteetti, lisayspaiva) VALUES (:kayttajaId, :nimi, :kuvaus, :prioriteetti, :lisayspaiva) RETURNING id');
+        $query->execute(array('kayttajaId' => $this->kayttajaId, 'nimi' => $this->nimi, 'kuvaus' => $this->kuvaus, 'prioriteetti' => $this->prioriteetti, 'lisayspaiva' => $this->lisayspaiva));
+        $row = $query->fetch();
+        $this->id = $row['id'];
     }
 
 }
