@@ -15,17 +15,12 @@ class TehtavaController extends BaseController {
     public static function store() {
         $params = $_POST;
         $luokat = $params['luokat'];
-        $parametrit = array(
+        $tehtava = new Tehtava(array(
             'nimi' => $params['nimi'],
-            'lisatiedot' => $params['lisatiedot'],
+            'kuvaus' => $params['kuvaus'],
             'prioriteetti' => (int) $params['prioriteetti'],
-            'kayttaja' => $_SESSION['kayttaja'],
-            'luokat' => array()
-        );
-        foreach ($luokat as $luokka) {
-            $parametrit['luokat'][] = $luokka;
-        }
-        $tehtava = new Tehtava($parametrit);
+            'lisayspaiva' => $params['lisayspaiva']
+        ));
         $tehtava->save();
         Redirect::to('/tehtava/' . $tehtava->id, array('viesti' => 'Tehtäväsi on lisätty'));
     }

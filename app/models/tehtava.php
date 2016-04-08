@@ -45,8 +45,8 @@ class Tehtava extends BaseModel {
     }
 
     public function save() {
-        $query = DB::connection()->prepare('INSERT INTO Tehtava (kayttajaId, nimi, kuvaus, prioriteetti, lisayspaiva) VALUES (:kayttajaId, :nimi, :kuvaus, :prioriteetti, :lisayspaiva) RETURNING id');
-        $query->execute(array('kayttajaId' => $this->kayttajaId, 'nimi' => $this->nimi, 'kuvaus' => $this->kuvaus, 'prioriteetti' => $this->prioriteetti, 'lisayspaiva' => $this->lisayspaiva));
+        $query = DB::connection()->prepare('INSERT INTO Tehtava (nimi, kuvaus, prioriteetti, lisayspaiva) VALUES (:kayttajaId, :nimi, :kuvaus, :prioriteetti, :lisayspaiva) RETURNING id');
+        $query->execute(array('nimi' => $this->nimi, 'kuvaus' => $this->kuvaus, 'prioriteetti' => $this->prioriteetti, 'lisayspaiva' => $this->lisayspaiva));
         $row = $query->fetch();
         $this->id = $row['id'];
     }
