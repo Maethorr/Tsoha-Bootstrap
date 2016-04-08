@@ -24,3 +24,8 @@ $routes->get('/suunnitelmat/kirjautuminen', function() {
 $routes->get('/suunnitelmat/kuvaus/1', function() {
     HelloWorldController::kuvaus();
 });
+
+$routes->get('/luokat', function() {
+    LuokkaController::index();
+});
+

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<h1>Käyttäjän Sara luokat</h1>
+
+<p><a class="btn btn-success" href="{{base_path}}/luokka/uusi" role="button">Lisää uusi luokka</a></p>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Nimi</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for luokka in luokat %}
+        <tr>
+            <td><a href="{{base_path}}/luokka/{{luokka.id}}">{{luokka.nimi}}</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
