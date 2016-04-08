@@ -14,7 +14,7 @@ class Luokka extends BaseModel {
         $rivit = $kysely->fetchAll();
         $luokat = array();
 
-        foreach ($rivit as $rivit) {
+        foreach ($rivit as $rivi) {
             $luokat[] = new Luokka(array(
                 'id' => $rivi['id'],
                 'kayttajaId' => $rivi['kayttajaId'],

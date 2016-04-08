@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Luo uusi luokka</h1>
+
+<form method="post" action="{{base_path}}/luokka">
+    <div class="form-group">
+        <label class="control-label">Nimi</label>
+        <input name="nimi" class="form-control" type="text" value="{{parametrit.nimi}}">
+    </div>
+    <br>
+    <div class="form-group">
+        <button type="submit" class="btn btn-success">Tallenna</button>
+    </div>
+</form>
+
+{% endblock %}

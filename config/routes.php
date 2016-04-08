@@ -28,4 +28,12 @@ $routes->get('/suunnitelmat/kuvaus/1', function() {
 $routes->get('/luokat', function() {
     LuokkaController::index();
 });
-
+$routes->get('/luokka/uusi', function() {
+    LuokkaController::uusi();
+});
+$routes->get('/luokka/:id', function() {
+    LuokkaController::show($id);
+});
+$routes->post('/luokka', function() {
+    LuokkaController::store();
+});
