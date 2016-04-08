@@ -25,8 +25,8 @@ $routes->get('/suunnitelmat/kuvaus/1', function() {
     HelloWorldController::kuvaus();
 });
 
-$routes->get('/tehtavat', function() {
-    TehtavaController::index();
+$routes->get('/tehtavat', function(){
+  TehtavaController::index();
 });
 $routes->post('/tehtava', function() {
     TehtavaController::store();

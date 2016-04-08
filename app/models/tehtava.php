@@ -2,38 +2,26 @@
 
 class Tehtava extends BaseModel {
 
-    public $id, $kayttajaId, $nimi, $kuvaus, $prioriteetti, $lisayspaiva, $luokat;
+    public $id, $kayttajaId, $nimi, $kuvaus, $prioriteetti, $lisayspaiva;
 
     public function __construct($attributes) {
         parent::__construct($attributes);
     }
 
     public static function all() {
-        $kysely = DB::connection()->prepare('SELECT * FROM Tehtava WHERE kayttajaId = :kayttajaId');
-        $kysely->execute(array('kayttajaId' => $_SESSION['kayttajaId']));
-        $rivit = $kysely->fetchAll();
+        $query = DB::connection()->prepare('SELECT * FROM Tehtava');
+        $query->execute();
+        $rows = $query->fetchAll();
         $tehtavat = array();
-        foreach ($rivit as $rivi) {
-            $luokat = array();
-            $luokkakysely = DB::connection()->prepare('SELECT luokka.id, luokka.nimi FROM Tehtava, Luokka, TehtavanLuokka WHERE TehtavanLuokka.tehtavaId = Tehtava.id and TehtavanLuokka.luokkaId = Luokka.id and Tehtava.id = :id');
-            $luokkakysely->execute(array('id' => $rivi['id']));
-            $luokkarivit = $luokkakysely->fetchAll();
-            foreach ($luokkarivit as $luokkarivi) {
-                $luokat[] = new Luokka(array(
-                    'id' => $luokkarivi['id'],
-                    'nimi' => $luokkarivi['nimi']
-                ));
-            }
+        foreach ($rows as $row) {
             $tehtavat[] = new Tehtava(array(
-                'id' => $rivi['id'],
-                'kayttajaId' => $rivi['kayttajaId'],
-                'nimi' => $rivi['nimi'],
-                'kuvaus' => $rivi['kuvaus'],
-                'prioriteetti' => $rivi['prioriteetti'],
-                'lisayspaiva' => $rivi['lisayspaiva'],
-                'luokat' => $luokat
+                'id' => $row['id'],
+                'kayttajaId' => $row['kayttajaId'],
+                'nimi' => $row['nimi'],
+                'kuvaus' => $row['kuvaus'],
+                'prioriteetti' => $row['prioriteetti'],
+                'lisayspaiva' => $row['lisayspaiva']
             ));
-            unset($luokat);
         }
         return $tehtavat;
     }
