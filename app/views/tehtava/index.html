@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Käyttäjän Sara tehtävät</h1>
+
+<p><a class="btn btn-success" href="{{base_path}}/tehtava/uusi" role="button">Lisää uusi muistiinpano</a></p>
+
+<table id="taulukko" class="table tablesorter">
+    <thead>
+        <tr>
+            <th>Nimi</th>
+            <th>Luokat</th>
+            <th>Tärkeys</th>
+            <th>Lisäyspäivä</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for tehtava in tehtavat %}
+        <tr>
+            <td><a href="{{base_path}}/tehtava/{{tehtava.id}}">{{tehtava.nimi}}</a></td>
+            <td>
+                {% for luokka in tehtava.luokat %}
+                {{luokka.nimi}} <br>
+                {% endfor %}
+            </td>
+            <td>{{tehtava.prioriteetti}}</td>
+            <td>{{tehtava.lisayspaiva}}</td>
+    <a class="btn btn-primary" href="{{toiminto}}" role="button">{{teksti|default('Muokkaa')}}</a>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+
+{% endblock %}

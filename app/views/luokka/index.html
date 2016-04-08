@@ -18,9 +18,10 @@
         {% for luokka in luokat %}
         <tr>
             <td><a href="{{base_path}}/luokka/{{luokka.id}}">{{luokka.nimi}}</a></td>
-        </tr>
-        {% endfor %}
-    </tbody>
+    <a class="btn btn-primary" href="{{toiminto}}" role="button">{{teksti|default('Muokkaa')}}</a>
+</tr>
+{% endfor %}
+</tbody>
 </table>
 
 {% endblock %}

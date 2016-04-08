@@ -25,13 +25,26 @@ $routes->get('/suunnitelmat/kuvaus/1', function() {
     HelloWorldController::kuvaus();
 });
 
+$routes->get('/tehtavat', function() {
+    TehtavaController::index();
+});
+$routes->get('/tehtava', function() {
+    TehtavaController::store();
+});
+$routes->get('/tehtava/uusi', function() {
+    TehtavaController::uusi();
+});
+$routes->get('/tehtava/:id', function($id) {
+    TehtavaController::show($id);
+});
+
 $routes->get('/luokat', function() {
     LuokkaController::index();
 });
 $routes->get('/luokka/uusi', function() {
     LuokkaController::uusi();
 });
-$routes->get('/luokka/:id', function() {
+$routes->get('/luokka/:id', function($id) {
     LuokkaController::show($id);
 });
 $routes->post('/luokka', function() {

@@ -1,0 +1,31 @@
+
+{% extends "base.html" %}
+{% block content %}
+
+
+<h1>{{tehtava.nimi}}</h1>
+
+<p><strong>Lisätiedot:</strong> {{tehtava.kuvaus}}</p>
+{% if tehtava.luokat|length > 0 %}
+<p><strong>Luokat:</strong>
+    {% for luokka in tehtava.luokat %}
+    {{luokka.nimi}} <br>
+    {% endfor %}
+    {% endif %}
+</p>
+<p><strong>Tärkeys:</strong> {{tehtava.prioriteetti}}</p>
+<p><strong>Lisäyspäivä:</strong> {{tehtava.lisayspaiva}}</p>
+
+<p>
+    <a class="btn btn-primary" href="{{toiminto}}" role="button">{{teksti|default('Muokkaa')}}</a>
+</p>
+
+<form method="post" action="{{toiminto}}" style="display: inline-block;">
+
+    <p>
+        <button type="submit" class="btn btn-danger">{{teksti|default('Poista')}}</button>
+    </p>
+
+</form>
+
+{% endblock %}
