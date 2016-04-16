@@ -1,6 +1,6 @@
 <?php
 
-require 'app/models/luokka.php';
+require 'app/models/tehtava.php';
 
 class HelloWorldController extends BaseController {
 
@@ -12,8 +12,8 @@ class HelloWorldController extends BaseController {
     public static function sandbox() {
 // Testaa koodiasi täällä
        // View::make('helloworld.html');
-        $tyyppi = Kayttaja::find(1);
-        $kayttajat = Kayttaja::all();
+        $tyyppi = Tehtava::find(1);
+        $kayttajat = Tehtava::all();
 // Kint-luokan dump-metodi tulostaa muuttujan arvon
         Kint::dump($kayttajat);
         Kint::dump($tyyppi);
