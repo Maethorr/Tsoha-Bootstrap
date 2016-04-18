@@ -16,7 +16,7 @@ class LuokkaController extends BaseController {
         $params = $_POST;
         $luokka = new Luokka(array(
             'nimi' => $params['nimi'],
-            'kayttaja' => $_SESSION['kayttaja']
+            'kayttajaid' => $_SESSION['kayttajaid']
         ));
         $luokka->save();
         Redirect::to('luokka' . $luokka->id, array('viesti' => 'Luokkasi on lisätty'));
@@ -24,6 +24,11 @@ class LuokkaController extends BaseController {
 
     public static function uusi() {
         View::make('luokka/uusi.html');
+    }
+
+    public static function muokkaa($id) {
+        $luokka = Luokka::find($id);
+        View::make('luokka/muokkaa.html', array('luokka' => $luokka));
     }
 
 }
