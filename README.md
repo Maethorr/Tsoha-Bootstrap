@@ -5,6 +5,11 @@ Yleisiä linkkejä:
 * [Linkki sovellukseeni](http://saratolv.users.cs.helsinki.fi/tsoha/kirjautuminen)
 * [Linkki dokumentaatiooni](https://github.com/Maethorr/Tsoha-Bootstrap/blob/master/doc/dokumentaatio.pdf)
 
+Testeihin käyttäjätunnus:
+
+* käyttäjätunnus: käyttäjä1
+  salasana: salasana1
+
 Sivujen suunnitelmat:
 * [Etusivu (kirjautuminen)](http://saratolv.users.cs.helsinki.fi/tsoha/suunnitelmat/kirjautuminen)
 * [Listaussivu](http://saratolv.users.cs.helsinki.fi/tsoha/suunnitelmat/muistilista)
