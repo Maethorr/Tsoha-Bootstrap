@@ -1,0 +1,29 @@
+{% macro poista_nappi(toiminto, teksti) %}
+  <form method="post" action="{{toiminto}}" style="display: inline-block;">
+    <button type="submit" class="btn btn-danger">{{teksti|default('Poista')}}</button>
+  </form>
+{% endmacro %}
+
+{% macro muokkaa_nappi(toiminto, teksti) %}
+  <a class="btn btn-primary" href="{{toiminto}}" role="button">{{teksti|default('Muokkaa')}}</a>
+{% endmacro %}
+
+{% macro nayta_viesti(viesti) %}
+  {% if viesti %}
+    <div class="alert alert-success">
+      {{viesti}}
+    </div>
+  {% endif %}
+{% endmacro %}
+
+{% macro nayta_virheet(virheet) %}
+  {% if virheet %}
+    <div class="alert alert-danger">
+      <ul>
+        {% for virhe in virheet %}
+          <li>{{virhe}}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+{% endmacro %}

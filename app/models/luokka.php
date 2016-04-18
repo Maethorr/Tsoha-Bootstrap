@@ -2,7 +2,7 @@
 
 class Luokka extends BaseModel {
 
-    public $id, $kayttajaId, $nimi;
+    public $id, $kayttajaid, $nimi;
 
     public function __construct($attributes) {
         parent::__construct($attributes);
@@ -13,11 +13,12 @@ class Luokka extends BaseModel {
         $kysely->execute();
         $rivit = $kysely->fetchAll();
         $luokat = array();
+        
 
         foreach ($rivit as $rivi) {
             $luokat[] = new Luokka(array(
                 'id' => $rivi['id'],
-                'kayttajaId' => $rivi['kayttajaId'],
+                'kayttajaid' => $rivi['kayttajaid'],
                 'nimi' => $rivi['nimi']
             ));
         }
@@ -33,7 +34,7 @@ class Luokka extends BaseModel {
         if ($rivi) {
             $luokka = new Luokka(array(
                 'id' => $rivi['id'],
-                'kayttajaId' => $rivi['kayttajaId'],
+                'kayttajaid' => $rivi['kayttajaid'],
                 'nimi' => $rivi['nimi']
             ));
         }
@@ -42,8 +43,8 @@ class Luokka extends BaseModel {
     }
     
     public function save() {
-        $kysely = DB::connection()->prepare('INSERT INTO Luokka (kayttajaId, nimi) VALUES (:kayttajaId, :nimi) RETURNING id');
-        $kysely->execute(array('kayttajaId' => $this->kayttajaId, 'nimi' => $this->nimi));
+        $kysely = DB::connection()->prepare('INSERT INTO Luokka (kayttajaid, nimi) VALUES (:kayttajaid, :nimi) RETURNING id');
+        $kysely->execute(array('kayttajaid' => $this->kayttajaid, 'nimi' => $this->nimi));
         $rivi = $kysely->fetch();
         $this->id = $rivi['id'];
     }
