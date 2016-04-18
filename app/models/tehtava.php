@@ -6,6 +6,7 @@ class Tehtava extends BaseModel {
 
     public function __construct($attributes) {
         parent::__construct($attributes);
+        $this->tarkistukset = array('tarkista_nimi', 'tarkista_nimi2', 'tarkista_prioriteetti', 'tarkista_kuvaus');
     }
 
     public static function all() {
@@ -81,6 +82,38 @@ class Tehtava extends BaseModel {
             $luokkakysely->execute(array('tehtavaid' => $this->id, 'luokkaid' => $luokkaid));
             $rivi = $kysely->fetch();
         }
+    }
+
+    public function tarkista_nimi() {
+        $virheet = array();
+        if ($this->nimi == '' || $this->nimi == null) {
+            $virheet[] = 'Tehtävällä täytyy olla nimi';
+        }
+        return $virheet;
+    }
+
+    public function tarkista_nimi2() {
+        $virheet = array();
+        if (strlen($this->nimi) > 50) {
+            $virheet[] = 'Tehtävän nimen enimmäispituus on 50 merkkiä';
+        }
+        return $virheet;
+    }
+
+    public function tarkista_prioriteetti() {
+        $virheet = array();
+        if ($this->prioriteetti < 1 || $this->prioriteetti > 5) {
+            $virheet[] = 'Prioriteetin on oltava välillä 1-5';
+        }
+        return $virheet;
+    }
+
+    public function tarkista_kuvaus() {
+        $virheet = array();
+        if (strlen($this->lisatiedot) > 500) {
+            $virheet[] = 'Kuvauksen enimmäispituus on 500 merkkiä';
+        }
+        return $virheet;
     }
 
     public function paivita() {

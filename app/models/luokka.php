@@ -6,6 +6,7 @@ class Luokka extends BaseModel {
 
     public function __construct($attributes) {
         parent::__construct($attributes);
+        $this->tarkistukset = array('tarkista_nimi', 'tarkista_nimi2');
     }
 
     public static function all() {
@@ -46,6 +47,22 @@ class Luokka extends BaseModel {
         $kysely->execute(array('kayttajaid' => $this->kayttajaid, 'nimi' => $this->nimi));
         $rivi = $kysely->fetch();
         $this->id = $rivi['id'];
+    }
+
+    public function tarkista_nimi() {
+        $virheet = array();
+        if ($this->nimi == '' || $this->nimi == null) {
+            $virheet[] = 'Luokalla täytyy olla nimi';
+        }
+        return $virheet;
+    }
+
+    public function tarkista_nimi2() {
+        $virheet = array();
+        if (strlen($this->nimi) > 50) {
+            $virheet[] = 'Luokan nimen enimmäispituus on 50 merkkiä';
+        }
+        return $virheet;
     }
 
     public function paivita() {

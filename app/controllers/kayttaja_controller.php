@@ -18,4 +18,14 @@ class KayttajaController extends BaseController {
         }
     }
 
+    public static function luo_uusi_kayttaja() {
+        $params = $_POST;
+        $virheet = Kayttaja::luo_uusi_kayttaja($params['kayttajatunnus'], $params['salasana']);
+        if ($virheet) {
+            View::make('/kayttaja/rekisteroityminen.html', array('virheet' => $virheet));
+        } else {
+            Redirect::to('/kirjautuminen', array('viesti' => 'Uusi käyttäjätunnus on luotu'));
+        }
+    }
+
 }
