@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block content %}
+{% import "makrot/lomakkeet.html" as lomakkeet %}
+
+<h1>Muokkaa: {{tehtava.nimi}}</h1>
+
+{{lomakkeet.nayta_virheet(virheet)}}
+
+<form method="post" action="{{base_path}}/tehtava/{{tehtava.id}}/muokkaa">
+    <div class="form-group">
+        <label class="control-label">Nimi</label>
+        <input name="nimi" class="form-control" type="text" value="{{tehtava.nimi}}">
+    </div>
+    <div class="form-group">
+        <label class="control-label">Kuvaus</label>
+        <textarea name="lisatiedot" class="form-control" type="text">{{tehtava.kuvaus}}</textarea>
+    </div>
+    <label class="control-label">Prioriteetti</label>
+    <div class="form-group">
+        <select type="number" name="prioriteetti" class="form-control">
+            <option selected="selected">{{tehtava.prioriteetti}}</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+    </div>
+    <br>
+    <div class="form-group">
+        <label class="control-label">Luokat</label>
+        <br>
+        {% for luokka in luokat %}
+        {% if luokka.id in tehtavan_luokat %}
+        <input type="checkbox" checked="checked" name="luokat[]" value="{{luokka.id}}">{{luokka.nimi}}</input>
+        <br>
+        {% else %}
+        <input type="checkbox" name="luokat[]" value="{{luokka.id}}">{{luokka.nimi}}</input>
+        <br>
+        {% endif %}
+        {% endfor %}
+        <input type="hidden" name="luokat[]" value="">
+    </div>
+    <br>
+    <div class="form-group">
+        <button type="submit" class="btn btn-success">Tallenna</button>
+    </div>
+</form>
+
+{{lomakkeet.poista_nappi("#{base_path}/tehtava/#{tehtava.id}/poista")}}
+
+{% endblock %}

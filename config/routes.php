@@ -37,6 +37,15 @@ $routes->get('/tehtava/uusi', function() {
 $routes->get('/tehtava/:id', function($id) {
     TehtavaController::show($id);
 });
+$routes->get('/tehtava/:id/muokkaa', function($id) {
+    TehtavaController::muokkaa($id);
+});
+$routes->post('/tehtava/:id/muokkaa', function($id) {
+    TehtavaController::paivita($id);
+});
+$routes->post('/tehtava/:id/poista', function($id) {
+    TehtavaController::poista($id);
+});
 
 $routes->get('/luokat', function() {
     LuokkaController::index();
