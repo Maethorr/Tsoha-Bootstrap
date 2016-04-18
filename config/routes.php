@@ -47,6 +47,13 @@ $routes->post('/tehtava/:id/poista', function($id) {
     TehtavaController::poista($id);
 });
 
+$routes->get('/kirjautuminen', function() {
+    KayttajaController::kirjautuminen();
+});
+$routes->post('/kirjautuminen', function() {
+    KayttajaController::kasittele_kirjautuminen();
+});
+
 $routes->get('/luokat', function() {
     LuokkaController::index();
 });
