@@ -1,7 +1,8 @@
-
 {% extends "base.html" %}
 {% block content %}
+{% import "makrot/lomakkeet.html" as lomakkeet %}
 
+{{lomakkeet.nayta_viesti(viesti)}}
 
 <h1>{{tehtava.nimi}}</h1>
 
@@ -17,15 +18,8 @@
 <p><strong>Lisäyspäivä:</strong> {{tehtava.lisayspaiva}}</p>
 
 <p>
-    <a class="btn btn-primary" href="{{toiminto}}" role="button">{{teksti|default('Muokkaa')}}</a>
+    {{lomakkeet.muokkaa_nappi("#{base_path}/muistiinpano/#{muistiinpano.id}/muokkaa")}}
+    {{lomakkeet.poista_nappi("#{base_path}/muistiinpano/#{muistiinpano.id}/poista")}}
 </p>
-
-<form method="post" action="{{toiminto}}" style="display: inline-block;">
-
-    <p>
-        <button type="submit" class="btn btn-danger">{{teksti|default('Poista')}}</button>
-    </p>
-
-</form>
 
 {% endblock %}

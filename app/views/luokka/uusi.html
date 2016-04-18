@@ -1,7 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
+{% import "makrot/lomakkeet.html" as lomakkeet %}
 
 <h1>Luo uusi luokka</h1>
+
+{{lomakkeet.nayta_virheet(virheet)}}
 
 <form method="post" action="{{base_path}}/luokka">
     <div class="form-group">

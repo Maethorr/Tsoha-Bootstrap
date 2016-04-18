@@ -1,21 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
+{% import "makrot/lomakkeet.html" as lomakkeet %}
 
-<div class="alert alert-success">
-    {{viesti}}
-</div>
+{{lomakkeet.nayta_viesti(viesti)}}
 
-<h1>Testitehtävä</h1>
-
-
-<p><strong>Kuvaus:</strong> Tähän tehtävän kuvaus ja lisäinfoa siitä.</p>
-<p><strong>Prioriteetti:</strong> 3</p>
-<p><strong>Luokka:</strong> kotityöt</p>
-<p><strong>Lisäyspäivämäärä:</strong> 01.04.2016</p>
+<h1>{{luokka.nimi}}</h1>
 
 <p>
-    <a class="btn btn-default" href="" role="button">Muokkaa</a>
-    <a class="btn btn-danger" href="" role="button">Poista</a>
+    {{lomakkeet.muokkaa_nappi("#{base_path}/luokka/#{luokka.id}/muokkaa")}}
+    {{lomakkeet.poista_nappi("#{base_path}/luokka/#{luokka.id}/poista")}}
 </p>
 
 
