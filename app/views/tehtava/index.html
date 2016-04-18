@@ -1,7 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
+{% import "makrot/lomakkeet.html" as lomakkeet %}
 
-<h1>Käyttäjän Sara tehtävät</h1>
+{{lomakkeet.nayta_viesti(viesti)}}
+
+<h1>Käyttäjän {{user_logged_in.kayttajatunnus}} tehtävät</h1>
 
 <p><a class="btn btn-success" href="{{base_path}}/tehtava/uusi" role="button">Lisää uusi tehtävä</a></p>
 
@@ -27,10 +30,10 @@
             </td>
             <td>{{tehtava.prioriteetti}}</td>
             <td>{{tehtava.lisayspaiva}}</td>
-    <a class="btn btn-primary" href="{{toiminto}}" role="button">{{teksti|default('Muokkaa')}}</a>
-</tr>
-{% endfor %}
-</tbody>
+            <td>{{lomakkeet.muokkaa_nappi("#{base_path}/muistiinpano/#{muistiinpano.id}/muokkaa")}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
 </table>
 
 {% endblock %}

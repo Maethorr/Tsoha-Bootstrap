@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
+{% import "makrot/lomakkeet.html" as lomakkeet %}
 
+{{lomakkeet.nayta_viesti(viesti)}}
 
-<h1>Käyttäjän Sara luokat</h1>
+<h1>Käyttäjän {{user_logged_in.kayttajatunnus}} luokat</h1>
 
 <p><a class="btn btn-success" href="{{base_path}}/luokka/uusi" role="button">Lisää uusi luokka</a></p>
 
@@ -18,10 +20,10 @@
         {% for luokka in luokat %}
         <tr>
             <td><a href="{{base_path}}/luokka/{{luokka.id}}">{{luokka.nimi}}</a></td>
-    <a class="btn btn-primary" href="{{toiminto}}" role="button">{{teksti|default('Muokkaa')}}</a>
-</tr>
-{% endfor %}
-</tbody>
+            <td>{{lomakkeet.muokkaa_nappi("#{base_path}/luokka/#{luokka.id}/muokkaa")}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
 </table>
 
 {% endblock %}
