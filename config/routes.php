@@ -25,7 +25,7 @@ $routes->get('/suunnitelmat/kuvaus/1', function() {
     HelloWorldController::kuvaus();
 });
 
-$routes->get('/tehtavat', function(){
+$routes->get('/tehtavat', function() {
     TehtavaController::index();
 });
 $routes->post('/tehtava', function() {
@@ -49,4 +49,13 @@ $routes->get('/luokka/:id', function($id) {
 });
 $routes->post('/luokka', function() {
     LuokkaController::store();
+});
+$routes->get('/luokka/:id/muokkaa', function($id) {
+    LuokkaController::muokkaa($id);
+});
+$routes->post('/luokka/:id/muokkaa', function($id) {
+    LuokkaController::paivita($id);
+});
+$routes->post('/luokka/:id/poista', function($id) {
+    LuokkaController::poista($id);
 });
