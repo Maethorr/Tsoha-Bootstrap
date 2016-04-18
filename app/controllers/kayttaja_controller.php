@@ -10,7 +10,7 @@ class KayttajaController extends BaseController {
         $params = $_POST;
         $kayttaja = Kayttaja::tarkista($params['kayttajatunnus'], $params['salasana']);
         if ($kayttaja) {
-            $_SESSION['kayttaja'] = $kayttaja->id;
+            $_SESSION['kayttajaid'] = $kayttaja->id;
             Redirect::to('/', array('viesti' => 'Tervetuloa ' . $kayttaja->kayttajatunnus));
         } else {
             $virheet = array('Väärä käyttäjätunnus tai salasana');
