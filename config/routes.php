@@ -1,7 +1,7 @@
 <?php
 
 $routes->get('/', function() {
-    KayttajaController::kirjautuminen();
+    TehtavaController::index();
 });
 
 $routes->get('/hiekkalaatikko', function() {
