@@ -11,7 +11,7 @@ class KayttajaController extends BaseController {
         $kayttaja = Kayttaja::tarkista($params['kayttajatunnus'], $params['salasana']);
         if ($kayttaja) {
             $_SESSION['kayttajaid'] = $kayttaja->id;
-            Redirect::to('/', array('viesti' => 'Tervetuloa ' . $kayttaja->kayttajatunnus));
+            Redirect::to('/tehtavat', array('viesti' => 'Tervetuloa ' . $kayttaja->kayttajatunnus));
         } else {
             $virheet = array('Väärä käyttäjätunnus tai salasana');
             View::make('kayttaja/kirjautuminen.html', array('virheet' => $virheet, 'kayttajatunnus' => $params['kayttajatunnus']));
