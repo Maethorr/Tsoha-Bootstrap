@@ -110,7 +110,7 @@ class Tehtava extends BaseModel {
 
     public function tarkista_kuvaus() {
         $virheet = array();
-        if (strlen($this->lisatiedot) > 500) {
+        if (strlen($this->kuvaus) > 500) {
             $virheet[] = 'Kuvauksen enimmäispituus on 500 merkkiä';
         }
         return $virheet;
