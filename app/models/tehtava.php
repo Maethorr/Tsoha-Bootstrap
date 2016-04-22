@@ -121,7 +121,7 @@ class Tehtava extends BaseModel {
         $kysely->execute(array('id' => $this->id, 'nimi' => $this->nimi, 'kuvaus' => $this->kuvaus, 'prioriteetti' => $this->prioriteetti));
         $rivi = $kysely->fetch();
         $tyhjenna_luokat = DB::connection()->prepare('DELETE FROM TehtavanLuokka WHERE tehtavaid = :tehtavaid');
-        $tyhjenna_luokat->execute(array('tehtava' => $this->id));
+        $tyhjenna_luokat->execute(array('tehtavaid' => $this->id));
         $rivi = $kysely->fetch();
         $luokat = $this->luokat;
         foreach ($luokat as $luokka) {
@@ -133,9 +133,9 @@ class Tehtava extends BaseModel {
 
     public function poista() {
         $luokkakysely = DB::connection()->prepare('DELETE FROM TehtavanLuokka WHERE tehtavaid = :tehtavaid');
-        $luokkakysely->execute(array('tehtava' => $this->id));
+        $luokkakysely->execute(array('tehtavaid' => $this->id));
         $rivi = $luokkakysely->fetch();
-        $kysely = DB::connection()->prepare('DELETE FROM Tehtava Where id = :id');
+        $kysely = DB::connection()->prepare('DELETE FROM Tehtava WHERE id = :id');
         $kysely->execute(array('id' => $this->id));
         $rivi = $kysely->fetch();
     }
