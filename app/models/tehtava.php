@@ -73,7 +73,7 @@ class Tehtava extends BaseModel {
 
     public function save() {
         $query = DB::connection()->prepare('INSERT INTO Tehtava (kayttajaid, nimi, kuvaus, prioriteetti, lisayspaiva) VALUES (:kayttajaid, :nimi, :kuvaus, :prioriteetti, now()) RETURNING id');
-        $query->execute(array('kayttajaid' => $this->kayttajaid, 'nimi' => $this->nimi, 'kuvaus' => $this->kuvaus, 'prioriteetti' => $this->prioriteetti));
+        $query->execute(array('kayttajaid' => $_SESSION['kayttajaid'], 'nimi' => $this->nimi, 'kuvaus' => $this->kuvaus, 'prioriteetti' => $this->prioriteetti));
         $rivi = $kysely->fetch();
         $this->id = $rivi['id'];
 
@@ -123,8 +123,7 @@ class Tehtava extends BaseModel {
         $tyhjenna_luokat = DB::connection()->prepare('DELETE FROM TehtavanLuokka WHERE tehtavaid = :tehtavaid');
         $tyhjenna_luokat->execute(array('tehtavaid' => $this->id));
         $rivi = $kysely->fetch();
-        $luokat = $this->luokat;
-        foreach ($luokat as $luokka) {
+        foreach ($this->luokat as $luokka) {
             $luokkakysely = DB::connection()->prepare('INSERT INTO TehtavanLuokka (tehtavaid, luokkaid) VALUES (:tehtavaid, :luokkaid)');
             $luokkakysely->execute(array('tehtavaid' => $this->id, 'luokkaid' => $luokkaid));
             $rivi = $kysely->fetch();
