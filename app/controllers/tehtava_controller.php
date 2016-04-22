@@ -59,7 +59,7 @@ class TehtavaController extends BaseController {
             'id' => $id,
             'kayttajaid' => $_SESSION['kayttajaid'],
             'nimi' => $params['nimi'],
-            'kuvaus' => $params['kuavus'],
+            'kuvaus' => $params['kuvaus'],
             'prioriteetti' => $params['prioriteetti'],
             'luokat' => array()
         );

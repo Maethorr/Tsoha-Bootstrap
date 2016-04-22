@@ -72,8 +72,8 @@ class Luokka extends BaseModel {
     }
 
     public function poista() {
-        $kysely = DB::connection()->prepare('DELETE FROM Luokat WHERE luokka = :luokka');
-        $kysely->execute(array('luokka' => $this->id));
+        $kysely = DB::connection()->prepare('DELETE FROM TehtavanLuokka WHERE luokkaid = :luokkaid');
+        $kysely->execute(array('luokkaid' => $this->id));
         $rivi = $kysely->fetch();
         $kysely = DB::connection()->prepare('DELETE FROM Luokka WHERE id = :id');
         $kysely->execute(array('id' => $this->id));

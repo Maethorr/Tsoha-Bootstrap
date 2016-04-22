@@ -18,13 +18,13 @@ class BaseModel {
 
     public function errors() {
         // Lisätään $errors muuttujaan kaikki virheilmoitukset taulukkona
-        $errors = array();
+        $virheet = array();
 
         foreach ($this->tarkistukset as $tarkistus) {
             $virheet = array_merge($virheet, $this->{$tarkistus}());
         }
 
-        return $errors;
+        return $virheet;
     }
 
 }
