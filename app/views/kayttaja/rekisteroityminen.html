@@ -1,7 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
+{% import "makrot/lomakkeet.html" as lomakkeet %}
 
   <h1>Luo uusi käyttäjätunnus</h1>
+  
+  {{lomakkeet.nayta_virheet(virheet)}}
+  {{lomakkeet.nayta_viesti(viesti)}}
 
   <form method="post" action="{{base_path}}/rekisteroityminen" class="form-horizontal">
     <div class="form-group">

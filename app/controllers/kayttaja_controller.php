@@ -18,6 +18,15 @@ class KayttajaController extends BaseController {
         }
     }
 
+    public static function rekisteroityminen() {
+        View::make('kayttaja/rekisteroityminen.html');
+    }
+
+    public static function kirjaudu_ulos() {
+        $_SESSION['kayttajaid'] = null;
+        Redirect::to('/kirjautuminen', array('viesti' => 'Olet kirjautunut ulos'));
+    }
+
     public static function luo_uusi_kayttaja() {
         $params = $_POST;
         $virheet = Kayttaja::luo_uusi_kayttaja($params['kayttajatunnus'], $params['salasana']);
