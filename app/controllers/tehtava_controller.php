@@ -25,7 +25,7 @@ class TehtavaController extends BaseController {
         $kaikki_luokat = array();
         foreach ($luokat as $id) {
             $kaikki_luokat[] = new Luokka(array(
-               'id' => $id 
+                'id' => $id
             ));
         }
         $parametrit['luokat'] = $kaikki_luokat;
@@ -51,7 +51,9 @@ class TehtavaController extends BaseController {
         $luokat = Luokka::all();
         $tehtavan_luokat = array();
         foreach ($tehtava->luokat as $luokka) {
-            $tehtavan_luokat[] = $luokka->id;
+            $tehtavan_luokat[] = new Luokka(array(
+                'id' => $id
+            ));
         }
         View::make('tehtava/muokkaa.html', array('tehtava' => $tehtava, 'luokat' => $luokat, 'tehtavan_luokat' => $tehtavan_luokat));
     }
@@ -67,9 +69,13 @@ class TehtavaController extends BaseController {
             'prioriteetti' => $params['prioriteetti'],
             'luokat' => array()
         );
-        foreach ($luokat as $luokka) {
-            $parametrit['luokat'][] = $luokka;
+        $tehtavan_luokat = array();
+        foreach ($luokat as $id) {
+            $tehtavan_luokat[] = new Luokka(array(
+                'id' => $id
+            ));
         }
+        $parametrit['luokat'] = $tehtavan_luokat;
         $tehtava = new Tehtava($parametrit);
         $virheet = $tehtava->errors();
         if (count($virheet) == 0) {
@@ -78,9 +84,12 @@ class TehtavaController extends BaseController {
         } else {
             $luokat = Luokka::all();
             $tehtavan_luokat = array();
-            foreach ($tehtava->luokat as $luokka) {
-                $tehtavan_luokat[] = $luokka;
+            foreach ($luokat as $id) {
+                $tehtavan_luokat[] = new Luokka(array(
+                    'id' => $id
+                ));
             }
+            $parametrit['luokat'] = $tehtavan_luokat;
             View::make('tehtava/muokkaa.html', array('virheet' => $virheet, 'tehtava' => $tehtava, 'luokat' => $luokat, 'tehtavan_luokat' => $tehtavan_luokat));
         }
     }
