@@ -15,26 +15,27 @@ class TehtavaController extends BaseController {
     public static function store() {
         $params = $_POST;
         $luokat = $params['luokat'];
-        $parametrit = array(
-            'kayttajaid' => $_SESSION['kayttajaid'],
-            'nimi' => $params['nimi'],
-            'kuvaus' => $params['kuvaus'],
-            'prioriteetti' => (int) $params['prioriteetti'],
-            'luokat' => array()
-        );
-        foreach ($luokat as $luokka) {
-            $parametrit['luokat'][] = $luokka;
-        }
-        $tehtava = new Tehtava($parametrit);
-        $virheet = $tehtava->errors();
-        if (count($virheet) == 0) {
-            $tehtava->save();
-            Redirect::to('/tehtava/' . $tehtava->id, array('viesti' => 'Tehtäväsi on lisätty'));
-        } else {
-            $luokat = Luokka::all();
-            $valitut = $tehtava->luokat;
-            View::make('tehtava/uusi.html', array('virheet' => $virheet, 'parametrit' => $parametrit, 'luokat' => $luokat, 'valitut' => $valitut));
-        }
+        Kint::dump($luokat);
+//        $parametrit = array(
+//            'kayttajaid' => $_SESSION['kayttajaid'],
+//            'nimi' => $params['nimi'],
+//            'kuvaus' => $params['kuvaus'],
+//            'prioriteetti' => (int) $params['prioriteetti'],
+//            'luokat' => array()
+//        );
+//        foreach ($luokat as $luokka) {
+//            $parametrit['luokat'][] = $luokka;
+//        }
+//        $tehtava = new Tehtava($parametrit);
+//        $virheet = $tehtava->errors();
+//        if (count($virheet) == 0) {
+//            $tehtava->save();
+//            Redirect::to('/tehtava/' . $tehtava->id, array('viesti' => 'Tehtäväsi on lisätty'));
+//        } else {
+//            $luokat = Luokka::all();
+//            $valitut = $tehtava->luokat;
+//            View::make('tehtava/uusi.html', array('virheet' => $virheet, 'parametrit' => $parametrit, 'luokat' => $luokat, 'valitut' => $valitut));
+//        }
     }
 
     public static function uusi() {

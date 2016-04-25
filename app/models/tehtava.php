@@ -79,7 +79,7 @@ class Tehtava extends BaseModel {
 
         foreach ($this->luokat as $luokka) {
             $luokkakysely = DB::connection()->prepare('INSERT INTO TehtavanLuokka (tehtavaid, luokkaid) VALUES (:tehtavaid, :luokkaid)');
-            $luokkakysely->execute(array('tehtavaid' => $this->id, 'luokkaid' => $luokka->id));
+            $luokkakysely->execute(array('tehtavaid' => $this->id, 'luokkaid' => $luokka));
             $rivi = $kysely->fetch();
         }
     }
