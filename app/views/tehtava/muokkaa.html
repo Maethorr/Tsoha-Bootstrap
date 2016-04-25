@@ -31,7 +31,7 @@
         <label class="control-label">Luokat</label>
         <br>
         {% for luokka in luokat %}
-        {% if luokka.id in tehtavan_luokat %}
+        {% if luokka in tehtavan_luokat %}
         <input type="checkbox" checked="checked" name="luokat[]" value="{{luokka.id}}">{{luokka.nimi}}</input>
         <br>
         {% else %}
