@@ -22,11 +22,13 @@ class TehtavaController extends BaseController {
             'prioriteetti' => (int) $params['prioriteetti'],
             'luokat' => array()
         );
-        foreach ($luokat as $luokka) {
-            $luokka = new Luokka(array(
-               'id' => $params['id'] 
+        $kaikki_luokat = array();
+        foreach ($luokat as $id) {
+            $kaikki_luokat[] = new Luokka(array(
+               'id' => $id 
             ));
         }
+        $parametrit['luokat'] = $kaikki_luokat;
         $tehtava = new Tehtava($parametrit);
         $virheet = $tehtava->errors();
         if (count($virheet) == 0) {
