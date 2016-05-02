@@ -15,6 +15,13 @@ class TehtavaController extends BaseController {
     public static function store() {
         $params = $_POST;
         $tehtava;
+        $parametrit = array(
+            'kayttajaid' => $_SESSION['kayttajaid'],
+            'nimi' => $params['nimi'],
+            'kuvaus' => $params['kuvaus'],
+            'prioriteetti' => (int) $params['prioriteetti'],
+            'luokat' => array()
+        );
         if (isset($params['luokat'])) {
             $luokat = $params['luokat'];
 
@@ -26,15 +33,8 @@ class TehtavaController extends BaseController {
             }
             $parametrit['luokat'] = $kaikki_luokat;
         }
-        $parametrit = array(
-            'kayttajaid' => $_SESSION['kayttajaid'],
-            'nimi' => $params['nimi'],
-            'kuvaus' => $params['kuvaus'],
-            'prioriteetti' => (int) $params['prioriteetti'],
-            'luokat' => array()
-        );
-        $tehtava = new Tehtava($parametrit);
 
+        $tehtava = new Tehtava($parametrit);
         $virheet = $tehtava->errors();
         if (count($virheet) == 0) {
             $tehtava->save();
@@ -66,17 +66,6 @@ class TehtavaController extends BaseController {
     public static function paivita($id) {
         $params = $_POST;
         $tehtava;
-        if (isset($params['luokat'])) {
-            $luokat = $params['luokat'];
-
-            $tehtavan_luokat = array();
-            foreach ($luokat as $id) {
-                $tehtavan_luokat[] = new Luokka(array(
-                    'id' => $id
-                ));
-            }
-            $parametrit['luokat'] = $tehtavan_luokat;
-        }
         $parametrit = array(
             'id' => $id,
             'kayttajaid' => $_SESSION['kayttajaid'],
@@ -85,8 +74,18 @@ class TehtavaController extends BaseController {
             'prioriteetti' => $params['prioriteetti'],
             'luokat' => array()
         );
-        $tehtava = new Tehtava($parametrit);
+        if (isset($params['luokat'])) {
+            $luokat = $params['luokat'];
+            $tehtavan_luokat = array();
+            foreach ($luokat as $id) {
+                $tehtavan_luokat[] = new Luokka(array(
+                    'id' => $id
+                ));
+            }
+            $parametrit['luokat'] = $tehtavan_luokat;
+        }
 
+        $tehtava = new Tehtava($parametrit);
         $virheet = $tehtava->errors();
         if (count($virheet) == 0) {
             $tehtava->paivita();
