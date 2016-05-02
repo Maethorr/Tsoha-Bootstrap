@@ -14,6 +14,7 @@ class TehtavaController extends BaseController {
 
     public static function store() {
         $params = $_POST;
+        $tehtava;
         if (isset($params['luokat'])) {
             $luokat = $params['luokat'];
             $parametrit = array(
@@ -62,6 +63,7 @@ class TehtavaController extends BaseController {
 
     public static function paivita($id) {
         $params = $_POST;
+        $tehtava;
         if (isset($params['luokat'])) {
             $luokat = $params['luokat'];
             $parametrit = array(
