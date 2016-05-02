@@ -30,8 +30,8 @@ class TehtavaController extends BaseController {
                 ));
             }
             $parametrit['luokat'] = $kaikki_luokat;
+            $tehtava = new Tehtava($parametrit);
         }
-        $tehtava = new Tehtava($parametrit);
         $virheet = $tehtava->errors();
         if (count($virheet) == 0) {
             $tehtava->save();
@@ -79,8 +79,8 @@ class TehtavaController extends BaseController {
                 ));
             }
             $parametrit['luokat'] = $tehtavan_luokat;
+            $tehtava = new Tehtava($parametrit);
         }
-        $tehtava = new Tehtava($parametrit);
         $virheet = $tehtava->errors();
         if (count($virheet) == 0) {
             $tehtava->paivita();
