@@ -14,8 +14,8 @@ class TehtavaController extends BaseController {
 
     public static function store() {
         $params = $_POST;
-        $luokat = $params['luokat'];
-        if ($luokat != null) {
+        if ($params['luokat'] != null) {
+            $luokat = $params['luokat'];
             $parametrit = array(
                 'kayttajaid' => $_SESSION['kayttajaid'],
                 'nimi' => $params['nimi'],
@@ -29,8 +29,8 @@ class TehtavaController extends BaseController {
                     'id' => $id
                 ));
             }
+            $parametrit['luokat'] = $kaikki_luokat;
         }
-        $parametrit['luokat'] = $kaikki_luokat;
         $tehtava = new Tehtava($parametrit);
         $virheet = $tehtava->errors();
         if (count($virheet) == 0) {
@@ -62,8 +62,8 @@ class TehtavaController extends BaseController {
 
     public static function paivita($id) {
         $params = $_POST;
-        $luokat = $params['luokat'];
-        if ($luokat != null) {
+        if ($params['luokat'] != null) {
+            $luokat = $params['luokat'];
             $parametrit = array(
                 'id' => $id,
                 'kayttajaid' => $_SESSION['kayttajaid'],
@@ -78,8 +78,8 @@ class TehtavaController extends BaseController {
                     'id' => $id
                 ));
             }
+            $parametrit['luokat'] = $tehtavan_luokat;
         }
-        $parametrit['luokat'] = $tehtavan_luokat;
         $tehtava = new Tehtava($parametrit);
         $virheet = $tehtava->errors();
         if (count($virheet) == 0) {
